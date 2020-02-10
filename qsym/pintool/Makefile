@@ -8,8 +8,8 @@
 ROOT := $(abspath $(shell pwd)/../..)
 
 PIN_ROOT := $(ROOT)/third_party/pin-2.14-71313-gcc.4.4.7-linux
-# CC := gcc-4.7
-# CXX := g++-4.7
+CC := gcc-4.8
+CXX := g++-4.8
 #
 
 ifdef PIN_ROOT
@@ -22,7 +22,10 @@ endif
 include $(CONFIG_ROOT)/makefile.config
 include makefile.rules
 include $(TOOLS_ROOT)/Config/makefile.default.rules
-TOOL_CXXFLAGS += -I$(ROOT)/third_party/z3/include
+# TOOL_CXXFLAGS += -I$(ROOT)/third_party/z3/include
+TOOL_CXXFLAGS += -I$(ROOT)/local/include
+TOOL_LPATHS += -L$(ROOT)/local/lib
+TOOL_LPATHS += -L$(ROOT)/local/lib32
 
 ##############################################################
 #
