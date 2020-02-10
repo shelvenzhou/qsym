@@ -18,16 +18,16 @@ sudo apt-get install -y libc6 libstdc++6 linux-libc-dev gcc-multilib \
 # install z3
 pushd third_party/z3
 rm -rf build
-./configure
+./configure --prefix=../../../local
 pushd build
 make -j$(nproc)
-sudo make install
+make install
 popd
 rm -rf build
 ./configure --x86
 cd build
 make -j$(nproc)
-sudo cp libz3.so /usr/lib32/
+cp libz3.so ../../../local/lib32/
 popd
 
 # build test directories
